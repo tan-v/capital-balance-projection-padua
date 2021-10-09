@@ -1,0 +1,34 @@
+<div *ngIf="data?.startBalance?.length; else noData" class="table_container">
+  <table>
+    <tr *ngFor="let row of tableData; let i=index">
+      <ng-container [ngSwitch]="row.type">
+        <ng-container *ngSwitchCase="'heading'">
+          <th *ngFor="let item of row.data" >{{item}}</th>
+        </ng-container>
+        <ng-container *ngSwitchCase="'currency'">
+          <td *ngFor="let item of row.data let i=index" >
+            <ng-container *ngIf="i===0">
+              <strong>{{item}}</strong>
+            </ng-container>
+            <ng-container *ngIf="i!==0">
+              {{ item | currency : 'USD' : 'symbol' : '1.0-0'}}
+            </ng-container>
+          </td>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <td *ngFor="let item of row.data let i=index" >
+            <ng-container *ngIf="i===0"><strong>{{item}}</strong></ng-container>
+            <ng-container *ngIf="i!==0">{{ item }}</ng-container>
+          </td>
+        </ng-container>
+      </ng-container>
+    </tr>
+  </table>
+</div>
+
+<ng-template #noData>
+  <div class="alert alert-light text-center" role="alert">
+    Data not available.
+  </div>
+</ng-template>
+

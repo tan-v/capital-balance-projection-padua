@@ -1,0 +1,127 @@
+<div class="input-form_container mx-auto">
+  <form (submit)="onSubmit()" [formGroup]="capitalInputForm">
+    <div class="row">
+      <!-- Salary input -->
+      <div class="col input-group mb-3">
+        <label class="p-2 form-label"> Salary </label>
+        <span class="input-group-text">$</span>
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          aria-label="Salary Amount"
+          [formControlName]="formControls.SALARY"
+        />
+        <span class="input-group-text">.00</span>
+        <div *ngIf="capitalInputForm.errors?.salary" class="alert alert-danger">
+          Salary is required.
+        </div>
+      </div>
+
+      <!-- Contribution Rate input -->
+      <div class="col input-group mb-3">
+        <label class="p-2 form-label">Contribution Rate </label>
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          aria-label="Contribution Rate"
+          [formControlName]="formControls.CONTRIBUTION"
+        />
+        <span class="input-group-text">%</span>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Inflation Rate input -->
+      <div class="col input-group mb-3">
+        <label class="p-2 form-label"> Inflation Rate </label>
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          aria-label="Inflation Rate"
+          [formControlName]="formControls.INFLATION"
+        />
+        <span class="input-group-text">%</span>
+      </div>
+
+      <!-- Earnings input -->
+      <div class="col input-group mb-3">
+        <label class="p-2 form-label">Earnings </label>
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          aria-label="Earnings"
+          [formControlName]="formControls.EARNINGS"
+        />
+        <span class="input-group-text">%</span>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Fees input -->
+      <div class="col input-group mb-3">
+        <label class="p-2 form-label"> Fees </label>
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          aria-label="Fees"
+          [formControlName]="formControls.FEES"
+        />
+        <span class="input-group-text">%</span>
+      </div>
+
+      <!-- Tax input -->
+      <div class="col input-group mb-3">
+        <label class="p-2 form-label">Tax </label>
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          aria-label="Tax"
+          [formControlName]="formControls.TAX"
+        />
+        <span class="input-group-text">%</span>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Withdrawal Rate input -->
+      <div class="col input-group mb-3">
+        <label class="p-2 form-label"> Withdrawal Rate </label>
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          aria-label="Withdrawal Amount"
+          [formControlName]="formControls.WITHDRAWAL_RATE"
+        />
+        <span class="input-group-text">%</span>
+      </div>
+
+      <!-- Withdrawal Start Year input -->
+      <div class="col input-group mb-3">
+        <label class="p-2 form-label">Withdrawal Start Year </label>
+        <input
+          type="number"
+          class="form-control form-control-sm"
+          aria-label="Withdrawal Started from year"
+          [formControlName]="formControls.WITHDRAWAL_YEAR"
+        />
+        <span class="input-group-text">YYYY</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9"></div>
+      <div class="col-3">
+        <button
+          type="submit"
+          class="btn btn-primary m-2"
+          [disabled]="!capitalInputForm.valid"
+        >
+          Submit
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-primary m-2"
+          (click)="reset()"
+        >
+          Reset
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

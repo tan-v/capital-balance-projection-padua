@@ -1,0 +1,36 @@
+<div class="card border-0">
+  <div class="card-body">
+    <h4 class="card-title text-center p-4">Capital Balance Calculator</h4>
+    <div class="card mt-2">
+      <div class="card-body input-form">
+        <h5 class="card-subtitle mb-2 text-muted text-center">Input Parameters</h5>
+        <app-input-form
+        (formValueEmitted)="calculateCapitalBalance($event)"
+        (clearDataEmitted)="clearData()"></app-input-form>
+      </div>
+    </div>
+    <div class="card mt-2">
+      <div class="card-body data-table">
+        <h5 class="card-subtitle mb-2 text-muted text-center text-under">
+          Capital Balance Data Table
+        </h5>
+        <app-data-table
+          [data]="tableData">
+        </app-data-table>
+      </div>
+    </div>
+    <div class="card mt-2">
+      <div class="card-body chart-display">
+        <h5 class="card-subtitle mb-2 text-muted text-center">Start Balance per Year</h5>
+        <app-chart-display *ngIf="graphData?.startBalances?.length else noData"
+          [data]="graphData">
+        </app-chart-display>
+        <ng-template #noData>
+          <div class="alert alert-light text-center" role="alert">
+            Data not available.
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
